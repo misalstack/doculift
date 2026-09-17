@@ -1,0 +1,70 @@
+# Invoice Parser Configuration
+
+# Application Settings
+app:
+  name: "DocuLIFT"
+  version: "0.1.0"
+  debug: true
+  log_level: "INFO"
+  description: "AI-powered Document & Invoice Parser"
+
+# OCR Engine Configuration
+ocr:
+  engine: "paddleocr"  # Options: paddleocr, easyocr, tesseract
+  language: ["en", "vi"]  # Supported languages
+  use_gpu: false
+  
+  paddleocr:
+    use_angle_cls: true
+    det_model_dir: null  # Use default
+    rec_model_dir: null  # Use default
+    cls_model_dir: null  # Use default
+    
+  easyocr:
+    gpu: false
+    model_storage_directory: "./models/easyocr"
+
+# Document Understanding Model
+document_ai:
+  model_name: "microsoft/layoutlmv3-base"
+  use_gpu: false
+  max_length: 512
+  
+# Extraction Configuration
+extraction:
+  fields:
+    - vendor_name
+    - vendor_address
+    - invoice_number
+    - invoice_date
+    - due_date
+    - subtotal
+    - tax
+    - total
+    - line_items
+    
+  confidence_threshold: 0.7
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 1
+  max_file_size_mb: 10
+  allowed_extensions: [".pdf", ".png", ".jpg", ".jpeg", ".tiff", ".bmp"]
+
+# Streamlit Configuration
+streamlit:
+  port: 8501
+  theme: "light"
+
+# Storage Configuration
+storage:
+  upload_dir: "./data/uploads"
+  output_dir: "./data/outputs"
+  temp_dir: "./data/temp"
+
+# Model Paths
+models:
+  layoutlm_path: "./models/layoutlm"
+  custom_ner_path: "./models/custom_ner"

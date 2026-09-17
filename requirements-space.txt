@@ -1,0 +1,16 @@
+# HuggingFace Spaces requirements (CPU only, no torch/LayoutLM)
+gradio>=4.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+opencv-python-headless>=4.8.0
+Pillow>=10.0.0
+pdf2image>=1.16.3
+PyPDF2>=3.0.0
+pydantic>=2.5.0
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+paddlepaddle==2.6.2
+paddleocr==2.8.1
+albumentations==1.3.1
+python-multipart>=0.0.6
+loguru>=0.7.0

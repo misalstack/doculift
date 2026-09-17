@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: doculift-invoice-parser
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    region: oregon
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: OCR_ENGINE
+        value: paddleocr
+      - key: USE_GPU
+        value: "false"
+      - key: LOG_LEVEL
+        value: INFO
