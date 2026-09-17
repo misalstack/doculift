@@ -1,76 +1,71 @@
-# Invoice Parser
+<div id='top' align="center">
 
-AI-powered Invoice/Receipt Parser using OCR and Document Understanding.
+# ⚡ DocuLIFT — Intelligent Document Extraction Engine
 
-## 🎯 Features
+### Next-Gen AI Platform for Automated Data Extraction
 
-- **Multiple OCR Engines**: Support for PaddleOCR and EasyOCR
-- **Document Understanding**: Optional LayoutLMv3 integration
-- **Structured Extraction**: Extract vendor info, dates, amounts, line items
-- **REST API**: FastAPI backend for integration
-- **Web Interface**: Streamlit app for easy use
-- **Multi-language**: Support for English, Vietnamese, and more
+An enterprise-grade document intelligence platform powered by **PaddleOCR**, **EasyOCR**, **LayoutLMv3**, and **FastAPI**. Built to extract key field insights automatically from complex invoices, receipts, and unstructured multi-language documents.
+
+<p>
+
+![Python](https://img.shields.io/badge/-Python-05122A?style=for-the-badge&logo=python)&nbsp;
+![FastAPI](https://img.shields.io/badge/-FastAPI-05122A?style=for-the-badge&logo=fastapi)&nbsp;
+![Streamlit](https://img.shields.io/badge/-Streamlit-05122A?style=for-the-badge&logo=streamlit)&nbsp;
+![PyTorch](https://img.shields.io/badge/-PyTorch-05122A?style=for-the-badge&logo=pytorch)&nbsp;
+![OpenCV](https://img.shields.io/badge/-OpenCV-05122A?style=for-the-badge&logo=opencv)
+
+</p>
+</div>
+
+---
+
+## 🔗 Live Demo 
+
+* 🚀 **Live App:** [DocuLIFT Railway Deployment](https://doculift-invoice-parser-production.up.railway.app)
+---
+
+## 🔧 Technologies
+
+* **Core Engines:** PaddleOCR, EasyOCR
+* **Document Understanding Model:** LayoutLMv3 (HuggingFace Transformers)
+* **Rule Engine:** Smart Regex & Heuristic Parsing Algorithms
+* **API Backend:** FastAPI, Pydantic
+* **Web UI Framework:** Streamlit
+* **Processing Tools:** OpenCV, Pillow, pdf2image, PyPDF2
+* **Containerization:** Docker & Railway Deployment
+
+---
+
+## ✨ Key Features & Capabilities
+
+* 🔍 **Multi-Engine OCR Processing:** Flexible switching between PaddleOCR and EasyOCR core engines for high-precision text recognition across diverse layouts.
+* 📐 **Layout-Aware Extraction:** Powered by LayoutLMv3 to recognize spatial relationships between key-value pairs (e.g., matching 'Total' with its corresponding amount).
+* ⚙️ **Rule-Based Heuristic Parsing:** Smart Regex algorithms designed to extract dates, invoice numbers, tax amounts, sub-totals, and currencies automatically.
+* ⚡ **GPU Acceleration Support:** Built-in toggle for hardware acceleration to execute heavy deep-learning model inferences instantly.
+* 📑 **Broad Format & File Support:** Handles large files up to 200MB across PNG, JPG, PDF, TIF, and BMP formats.
+
+---
 
 ## 📁 Project Structure
 
-```
-invoice-parser/
-├── src/                          # Source code
-│   ├── __init__.py               # Package initialization
-│   ├── core/                     # Core functionality
-│   │   ├── __init__.py
-│   │   ├── config.py             # Configuration management
-│   │   ├── logger.py             # Centralized logging
-│   │   └── exceptions.py         # Custom exceptions
-│   ├── models/                   # Data models & schemas
-│   │   ├── __init__.py
-│   │   └── schemas.py            # Pydantic models
-│   ├── ocr/                      # OCR engines
-│   │   ├── __init__.py
-│   │   ├── base.py               # Base OCR class
-│   │   ├── paddleocr_engine.py   # PaddleOCR implementation
-│   │   ├── easyocr_engine.py     # EasyOCR implementation
-│   │   └── ocr_factory.py        # OCR factory pattern
-│   ├── extraction/               # Field extraction
-│   │   ├── __init__.py
-│   │   ├── invoice_extractor.py  # Main extractor
-│   │   ├── field_extractor.py    # Rule-based extraction
-│   │   └── layoutlm_extractor.py # LayoutLM-based extraction
-│   ├── processing/               # Image/PDF processing
-│   │   ├── __init__.py
-│   │   ├── preprocessor.py       # Image preprocessing
-│   │   ├── postprocessor.py      # Text postprocessing
-│   │   └── pdf_handler.py        # PDF handling
-│   ├── utils/                    # Helper utilities
-│   │   ├── __init__.py
-│   │   ├── file_utils.py         # File operations
-│   │   ├── text_utils.py         # Text processing
-│   │   └── image_utils.py        # Image operations
-│   ├── api/                      # FastAPI REST API
-│   │   ├── __init__.py
-│   │   ├── app.py                # FastAPI app
-│   │   └── routes.py             # API routes
-│   └── web/                      # Web interface
-│       ├── __init__.py
-│       └── streamlit_app.py      # Streamlit application
-├── app/                          # (Legacy) Old streamlit location
-├── config/
-│   └── config.yaml               # Configuration file
-├── data/                         # Data directories
-│   ├── uploads/                  # Uploaded files
-│   ├── outputs/                  # Processed outputs
-│   └── temp/                     # Temporary files
-├── tests/                        # Unit tests
-│   ├── conftest.py
-│   ├── test_api.py
-│   ├── test_extraction.py
-│   └── test_ocr.py
-├── .gitignore
-├── requirements.txt
-├── pyproject.toml
-├── run_api.py                    # Run FastAPI server
-└── run_app.py                    # Run Streamlit app
-```
+```text
+doculift/
+├── src/                          # Core source code
+│   ├── api/                      # FastAPI REST API implementation & routes
+│   ├── core/                     # Configuration, logger, & custom exceptions
+│   ├── extraction/               # Invoice, LayoutLMv3 & rule-based extractors
+│   ├── models/                   # Pydantic data schemas
+│   ├── ocr/                      # OCR engine factories (PaddleOCR & EasyOCR)
+│   ├── processing/               # Image preprocessing, postprocessing & PDF handlers
+│   ├── utils/                    # Helper scripts (file, text, and image utilities)
+│   └── web/                      # Streamlit UI implementation
+├── config/                       # System & model configuration settings (config.yaml)
+├── data/                         # Temporary upload & processing directories
+├── tests/                        # Comprehensive unit & extraction test suites
+├── Dockerfile                    # Containerization build setup
+├── run_api.py                    # Script to start FastAPI server
+├── run_app.py                    # Script to launch Streamlit frontend
+└── requirements.txt              # Project dependencies
 
 ## 🚀 Quick Start
 
@@ -205,64 +200,6 @@ pytest tests/ -v
 pytest tests/ --cov=src --cov-report=html
 ```
 
-## 🛠️ Development
-
-### Adding Custom OCR Engine
-
-```python
-from src.ocr.base import BaseOCR, OCRResult
-from src.ocr import OCRFactory
-
-class MyOCREngine(BaseOCR):
-    def _initialize_model(self):
-        # Initialize your model
-        pass
-    
-    def _process_image(self, image):
-        # Process image and return OCRResult
-        pass
-
-# Register engine
-OCRFactory.register_engine("myocr", MyOCREngine)
-```
-
-### Adding Custom Extraction Rules
-
-```python
-from src.extraction.field_extractor import FieldExtractor, ExtractionRule
-
-extractor = FieldExtractor()
-extractor.add_rule(ExtractionRule(
-    name="po_number",
-    patterns=[
-        r"PO[\s#:]*([A-Z0-9\-]+)",
-        r"Purchase Order[\s#:]*([A-Z0-9\-]+)",
-    ],
-))
-```
-
-## 📚 Technologies
-
-- **OCR**: PaddleOCR, EasyOCR
-- **Document AI**: LayoutLMv3 (HuggingFace Transformers)
-- **API**: FastAPI, Pydantic
-- **Web UI**: Streamlit
-- **Image Processing**: OpenCV, Pillow
-- **PDF**: pdf2image, PyPDF2
-
-## 🗺️ Roadmap
-
-- [ ] Fine-tune LayoutLMv3 on custom dataset
-- [ ] Add support for more document types (receipts, bills)
-- [ ] Multi-page document support
-- [ ] Table extraction enhancement
-- [ ] Cloud deployment (Docker, Kubernetes)
-- [ ] Integration with accounting software
-
-## 📄 License
-
-MIT License
-
 ## 🤝 Contributing
 
-Contributions are welcome! Please read the contributing guidelines first.
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
